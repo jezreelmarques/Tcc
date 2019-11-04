@@ -1,134 +1,31 @@
-*{
-	
-	margin: 0;
-	padding: 0;
-
-
+.botaopesquisa {
+    width: 100%;
 }
 
-@font-face {
-	 src: url(../fonts/MANDINGO.ttf);
-	 font-family: MANDINGO; 
-
- 
+.botao {
+    width: 15%;
+    float: left;
 }
 
-
-body{
-	background-color: white;
-	
+.pesquisa {
+    width: 85%;
+    float: right;
 }
 
-header{
-	text-align: center;
-	background-color: #0000FF;
-	height: 8vw;
-	color: white;
-	font-size: 2.5vw;
+.form-control {
+    border-radius: 0%;
 }
 
-
-#imglogo{
-	height: 70px;
-	width: 50px;
-	float: left;
-	margin:20px;
-
+.btn-menu {
+    border-radius: 0%;
+    padding-left: 0%;
+    padding-right: 0%;
 }
 
-#topo{
-	height: 120px;
-	background-color: #00008B;
-	margin-left: 0px;
-	margin-right: 0px;
-	width: 100%;
-	padding: 0px;
-	
+#form-addaluno {
+    display: none;
 }
 
-.letreiro{
-	font-family:MANDINGO;
-	font-size: 80px;
-
-	text-align: center;
-
-
-}
-
-.cadastro{
-	position: absolute;
-	margin-top: 1%;
-	margin-left: 37%;
-	text-align:center;
-}
-
-input{
-	margin-bottom: 2%;
-}
-
-fieldset{
-	width: 10%;
-	font-family: Verdana;
-	text-align:center;
-}
-
-
-.ir{
-	width: 9%;
-	float: right;
-	margin-right: 2%
-}
-.inss{
-	width: 9%;
-	float: left;
-	margin-left: 2%
-
-}
-
-#img{	
-	width: 100%;
-}
-
-table{
-	border: 1px solid #000;
-	background-color: #DCDCDC; 
-	margin-right: auto;
-	margin-left: auto;
-	width: auto;
-	margin-top: 10px;
-}
-
-td{
-	border: 1px solid #000;
-	padding: 7px;
-}
-
-.footer{
-	text-align:center;
-	background-color: #0000FF;
-	color: white;
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-}
-footer{
-	text-align:center;
-	background-color: #0000FF;
-	color: white;
-	}
-
-#direito{
-	text-align:center;
-	margin:20px;
-}
-
-#esquerdo{
-	float: left;
-	margin:20px;
-
-}
-
-#vitima{
-	font-size: 50px;
-	text-align: center;
+#btn-addAluno {
+    float: center;
 }

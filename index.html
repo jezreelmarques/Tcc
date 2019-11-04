@@ -1,17 +1,35 @@
-<!doctype html>
 <html>
 
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta charset="UTF-8" />
-	<title>Criação de Sites</title>
-	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="./css/style.css" rel="stylesheet" />
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/jquery.mobile.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <title>Criação de Sites</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./css/style.css" rel="stylesheet" />
+    <script src="js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js">
+    </script>
+
 </head>
 
 <body>
+
+    <div class="botaopesquisa">
+        <div class="botao">
+            <button type="button" class="btn-menu btn btn-primary btn-block">MENU</button>
+        </div>
+        <div class="pesquisa">
+            <input class="form-control" id="search" type="text" placeholder="Search..." />
+        </div>
+    </div>
+
+    <div id="map" style="width:100%;height:700px;"> </div>
+
+
+
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAz6PXPByo9Ih_Taqjq0EVDF8OotH3q3ac&callback=createMap"></script>
 
 
 </body>

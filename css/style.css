@@ -22,10 +22,22 @@
     padding-right: 0%;
 }
 
-#form-addaluno {
+#form-addAluno {
     display: none;
 }
 
 #btn-addAluno {
     float: center;
+}
+
+#form-addEscola {
+    display: none;
+}
+
+#btn-addEscola {
+    float: center;
+}
+
+#container-areaMenu {
+    margin-top: 10px;
 }

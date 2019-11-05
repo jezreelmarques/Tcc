@@ -16,18 +16,28 @@
     <script>
         $(document).ready(function() {
             $("#btn-addAluno").click(function() {
-                $("#form-addaluno").css("display", "block");
+                $("#form-addAluno").css("display", "block");
             });
+
+        });
+
+        $(document).ready(function() {
+            $("#btn-addEscola").click(function() {
+                $("#form-addEscola").css("display", "block");
+            });
+
         });
     </script>
 
-    <div class="container-fluid">
+    <a href="../index.html"><button type="button" class="btn btn-primary">Voltar</button></a>
+
+    <div id="container-areaMenu" class="container-fluid">
 
         <button type="button" id="btn-addAluno" class="btn btn-primary btn-lg">Adicionar Aluno</button>
 
 
         <!-- Este bloco de adiucionar aluno vira display none ao clicar botao-->
-        <div id="form-addaluno">
+        <div id="form-addAluno">
             <form>
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -62,13 +72,55 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Entrar</button>
+                <button type="submit" class="btn btn-primary">Adicionar</button>
             </form>
 
         </div>
         <!-- ^ Bloco de adicionar aluno acaba aqui ^-->
 
 
+
+
+
+        <button type="button" id="btn-addEscola" class="btn btn-primary btn-lg">Adicionar Escola</button>
+
+        <!-- Este bloco de adiucionar aluno vira display none ao clicar botao-->
+        <div id="form-addEscola">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Nome da Escola</label>
+                        <input type="name" class="form-control" required id="nomeCompletoEscola" placeholder="CIMOL">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Rua</label>
+                    <input type="text" class="form-control" required id="ruaEscola" placeholder="Rua dos Bois">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress2">Numero da Escola</label>
+                    <input type="number" class="form-control" required id="numeroEscola" placeholder="122">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">Cidade</label>
+                        <input type="text" class="form-control" required id="cidadeEscola" placeholder="Taquara">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">Estado codigo</label>
+                        <input type="text" class="form-control" required id="estadoEscola" placeholder="RS">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputCEP">CEP</label>
+                        <input type="number" class="form-control" required id="cepEscola" placeholder="95630000">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Adicionar</button>
+            </form>
+
+        </div>
+        <!-- ^ Bloco de adicionar aluno acaba aqui ^-->
 
 
 

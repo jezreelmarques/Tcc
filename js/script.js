@@ -42,3 +42,20 @@ function handleLocationError(content, position) {
     infoWindow.setContent(content);
     infoWindow.open(map);
 }
+
+//Script para salvar formulario
+
+function salvarAluno() {
+    var nomeCompletoAluno = document.getElementById("nomeCompletoAluno");
+    var celularAluno = document.getElementById("celularAluno");
+    var ruaAluno = document.getElementById("ruaAluno");
+    var numeroCasaAluno = document.getElementById("numeroCasaAluno");
+    var cidadeAluno = document.getElementById("cidadeAluno");
+    var estadoAluno = document.getElementById("estadoAluno");
+    var cepAluno = document.getElementById("cepAluno");
+
+
+
+
+
+}

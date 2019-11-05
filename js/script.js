@@ -43,8 +43,7 @@ function handleLocationError(content, position) {
     infoWindow.open(map);
 }
 
-//Script para salvar formulario
-
+//Script para salvar formulario de adicionar aluno
 function salvarAluno() {
     var nomeCompletoAluno = document.getElementById("nomeCompletoAluno");
     var celularAluno = document.getElementById("celularAluno");
@@ -55,6 +54,16 @@ function salvarAluno() {
     var cepAluno = document.getElementById("cepAluno");
 
 
+}
+
+//Script para salvar formulario de adicionar escola
+function salvarEscola() {
+    var nomeCompletoEscola = document.getElementById("nomeCompletoEscola");
+    var ruaEscola = document.getElementById("ruaEscola");
+    var numeroEscola = document.getElementById("numeroEscola");
+    var cidadeEscola = document.getElementById("cidadeEscola");
+    var estadoEscola = document.getElementById("estadoEscola");
+    var cepEscola = document.getElementById("cepEscola");
 
 
 

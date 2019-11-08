@@ -11,20 +11,25 @@ $(document).ready(function() {
     $('#btn-menu').click(function() {
         $('#divMenu').css("display", "block");
         $('#map').css("display", "none");
+        $('#btn-menu').css("display", "none");
+        $('#btn-menuVoltar').css("display", "block");
         $('#divMenu').animate({
-            height: "80%",
-
-
+            height: "100%",
         });
+    });
 
+    $('#btn-menuVoltar').click(function() {
+        $('#divMenu').css("display", "none");
+        $('#map').css("display", "block");
+        $('#btn-menu').css("display", "block");
+        $('#btn-menuVoltar').css("display", "none");
+        $('#divMenu').animate({
+            height: "0%",
+        });
     });
 
 
-    /*$('#btn-menu').click(function() {
-        $('#divMenu').toggle(1000);
-        $('#divMenu').addClass('efeito');
-        });
-    */
+
 
 
 

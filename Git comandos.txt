@@ -4,4 +4,5 @@
 4 - git status
 5 - git commit -m "mensagem dizendo oq foi feito"
 6 - git remote add origin https://github.com/jezreelmarques/Tcc.git
-7 - git push -u origin master
+7 - git tag -a V1.00.1 -m "Version 1.00.1 08/11/2019"
+8 - git push -u origin master

@@ -4,11 +4,23 @@ $(document).ready(function() {
         $("#form-addAluno").css("display", "block");
     });
 
+
     $("#btn-Escola").click(function() {
-        $("#form-addEscola").css("display", "block");
+        $("#form-addEscola").show();
+        $("#btn-Escola").hide();
+        $("#btn-EscolaVoltar").show();
     });
 
+    $("#btn-EscolaVoltar").click(function() {
+        $("#form-addEscola").hide();
+        $("#btn-Escola").show();
+        $("#btn-EscolaVoltar").hide();
+    });
+
+
+
     $('#btn-menu').click(function() {
+
         $('#divMenu').css("display", "block");
         $('#map').css("display", "none");
         $('#btn-menu').css("display", "none");

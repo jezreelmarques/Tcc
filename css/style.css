@@ -62,6 +62,11 @@
     float: center;
 }
 
+#btn-EscolaVoltar {
+    float: center;
+    display: none;
+}
+
 #container-areaMenu {
     margin-top: 10px;
 }
@@ -114,4 +119,8 @@ ul {
 #alunos {
     display: none;
     background-color: #368887;
+}
+
+th {
+    padding: 5px;
 }

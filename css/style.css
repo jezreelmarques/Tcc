@@ -55,6 +55,7 @@
 
 #form-addEscola {
     display: none;
+    height: 90%;
 }
 
 #btn-Escola {
@@ -69,10 +70,48 @@
     display: none;
     position: relative;
     margin-top: 0%;
-    background-color: gray;
+    background-color: #368887;
     width: 100%;
 }
 
 #divSubMenu {
     padding: 10px;
+}
+
+.nav_menu {
+    text-align: center;
+    list-style: none;
+    font-size: 35px;
+    color: white;
+    letter-spacing: 10px;
+    font-family: Arial;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+li {
+    margin-top: 35px;
+    text-decoration: none;
+}
+
+ul {
+    padding: 0px;
+    text-decoration: none;
+}
+
+#escolas {
+    display: none;
+    background-color: #368887;
+    padding: 10px;
+}
+
+#alunos {
+    display: none;
+    background-color: #368887;
 }

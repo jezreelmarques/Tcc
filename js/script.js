@@ -19,13 +19,29 @@ $(document).ready(function() {
     });
 
     $('#btn-menuVoltar').click(function() {
-        $('#divMenu').css("display", "none");
+        $('#divMenu').animate({
+            height: "0%",
+
+        });
         $('#map').css("display", "block");
         $('#btn-menu').css("display", "block");
         $('#btn-menuVoltar').css("display", "none");
-        $('#divMenu').animate({
-            height: "0%",
-        });
+        $('#divMenu').css("display", "none");
+        $("#escolas").css("display", "none");
+        $("#alunos").css("display", "none");
+        $("#form-addEscola").css("display", "none");
+
+
+    });
+
+    $("#nav-escola").click(function() {
+        $("#escolas").css("display", "block");
+        $("#divMenu").css("display", "none");
+    });
+
+    $("#nav-aluno").click(function() {
+        $("#alunos").css("display", "block");
+        $("#divMenu").css("display", "none");
     });
 
 

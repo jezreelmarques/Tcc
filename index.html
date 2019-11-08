@@ -1,6 +1,6 @@
 <html>
 
-<head>
+<head manifest="offlinedatabase.manifest">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8" />
     <title>Criação de Sites</title>
@@ -9,7 +9,10 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.js">
     </script>
+    <script src="./js/config.js"></script>
+    <script src="./js/sql-lite.js"></script>
     <script src="js/script.js"></script>
+
 
 </head>
 
@@ -30,16 +33,102 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAz6PXPByo9Ih_Taqjq0EVDF8OotH3q3ac&callback=createMap"></script>
 
 
-
+    <!--sessao de navegaçao entre topicos-->
     <div id="divMenu">
         <div id="divSubMenu">
-            <button type="button" id="btn-Aluno" class="btn btn-primary btn-lg">Alunos</button>
-            <button type="button" id="btn-Escola" class="btn btn-primary btn-lg">Escolas</button>
+            <!--
+            //<button type="button" id="btn-Escola" class="btn btn-primary btn-lg">Escolas</button>-->
 
-
+            <!-- ACTUAL NAVIGATION MENU -->
+            <ul class="nav_menu" id="menu" tabindex="-1" aria-label="main navigation">
+                <li class="nav__item"><a href="#" id="nav-">ROTAS</a></li>
+                <li class="nav__item"><a href="#" id="nav-aluno">ALUNOS</a></li>
+                <li class="nav__item"><a href="#" id="nav-escola">ESCOLAS</a></li>
+                <li class="nav__item"><a href="#" id="nav-">SOBRE</a></li>
+            </ul>
 
 
         </div>
+    </div>
+
+    <!--sessao escolas-->
+    <div id="escolas">
+        <button type="button" id="btn-Escola" class="btn btn-primary btn-lg">Adicionar Escola</button>
+        <!-- Este bloco de adiucionar escola vira display none ao clicar botao-->
+        <div id="form-addEscola">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Nome da Escola</label>
+                        <input type="name" class="form-control" required id="inputNomeEscola" placeholder="CIMOL">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Logradouro</label>
+                    <input type="text" class="form-control" required id="inputlogradouroEscola" placeholder="Rua dos Bois">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress2">Numero da Escola</label>
+                    <input type="number" class="form-control" required id="inputNumeroEscola" placeholder="122">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">Cidade</label>
+                        <input type="text" class="form-control" required id="inputCidadeEscola" placeholder="Taquara">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">Telefone</label>
+                        <input type="number" class="form-control" required id="inputTelefoneEscola" placeholder="9999999">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputCEP">Email</label>
+                        <input type="email" class="form-control" required id="inputEmailEscola" placeholder="text@gmail.com">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputCEP">Bairro</label>
+                        <input type="text" class="form-control" required id="inputBairroEscola" placeholder="text@gmail.com">
+                    </div>
+                </div>
+
+                <button type="submit" id="saveEscola" class="btn btn-primary">Adicionar</button>
+            </form>
+
+        </div>
+        <!-- ^ Bloco de adicionar escola acaba aqui ^-->
+
+        <div id="listEscola">
+            <h2>Escolas</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Escola</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">a</th>
+                    </tr>
+                </thead>
+                <tbody id="itensDataEscola">
+
+                </tbody>
+            </table>
+
+        </div>
+        <script src="./js/escola.js"></script>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- sessao alunos-->
+    <div id="alunos">
+
+        <button type="button" id="btn-Aluno" class="btn btn-primary btn-lg">Alunos</button>
     </div>
 
 

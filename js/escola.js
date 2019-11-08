@@ -154,6 +154,11 @@ $("#saveEscola").click(function() {
 });
 
 
+$(".excluir").click(function() {
+    console.log(this.attr('id'));
+    return false;
+});
+
 function listEscola() {
     escola = new Escola();
     escola.findAll(function(resultado) {
@@ -167,7 +172,7 @@ function listEscola() {
                     "</td><td>" + resultado[i].teleone +
                     // "</td><td>" + resultado[i].email +
                     //"</td><td>" + resultado[i].logradouro + ", " + resultado[i].numero + ", " + resultado[i].bairro + ", " + resultado[i].cidade +
-                    "</td><td>a</td>" +
+                    "</td><td><a href='#' id='" + resultado[i].id + "' class='excluir' >x</a></td>" +
                     "</tr>"
                 );
             }

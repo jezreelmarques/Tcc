@@ -17,6 +17,18 @@ $(document).ready(function() {
         $("#btn-EscolaVoltar").hide();
     });
 
+    $("#btn-Aluno").click(function() {
+        $("#form-addAluno").show();
+        $("#btn-Aluno").hide();
+        $("#btn-AlunoVoltar").show();
+    });
+
+    $("#btn-AlunoVoltar").click(function() {
+        $("#form-addAluno").hide();
+        $("#btn-Aluno").show();
+        $("#btn-AlunoVoltar").hide();
+    });
+
 
 
     $('#btn-menu').click(function() {

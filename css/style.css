@@ -67,6 +67,15 @@
     display: none;
 }
 
+#btn-Aluno {
+    float: center;
+}
+
+#btn-AlunoVoltar {
+    float: center;
+    display: none;
+}
+
 #container-areaMenu {
     margin-top: 10px;
 }
@@ -119,6 +128,7 @@ ul {
 #alunos {
     display: none;
     background-color: #368887;
+    padding: 10px;
 }
 
 th {

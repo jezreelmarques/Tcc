@@ -61,7 +61,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputEmail4">Nome da Escola</label>
-                        <input type="name" class="form-control" required id="inputNomeEscola" placeholder="CIMOL">
+                        <input type="name" class="form-control" required id="inputNomeEscola" placeholder="Cimol">
                     </div>
                 </div>
                 <div class="form-group">
@@ -87,7 +87,7 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="inputCEP">Bairro</label>
-                        <input type="text" class="form-control" required id="inputBairroEscola" placeholder="text@gmail.com">
+                        <input type="text" class="form-control" required id="inputBairroEscola" placeholder="Centro">
                     </div>
                 </div>
 
@@ -124,15 +124,72 @@
 
 
 
-
-
-    <!-- sessao alunos-->
+    <!--sessao alunos-->
     <div id="alunos">
+        <button type="button" id="btn-Aluno" class="btn btn-primary btn-lg">Adicionar Aluno</button>
+        <button type="button" id="btn-AlunoVoltar" class="btn btn-primary btn-lg">Adicionar Aluno</button>
+        <!-- Este bloco de adiucionar aluno vira display none ao clicar botao-->
+        <div id="form-addAluno">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Nome completo</label>
+                        <input type="name" class="form-control" required id="inputNomeAluno" placeholder="Joao">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Logradouro</label>
+                    <input type="text" class="form-control" required id="inputlogradouroAluno" placeholder="Rua dos Bois">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress2">Numero</label>
+                    <input type="number" class="form-control" required id="inputNumeroAluno" placeholder="122">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">Cidade</label>
+                        <input type="text" class="form-control" required id="inputCidadeAluno" placeholder="Taquara">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">Telefone</label>
+                        <input type="number" class="form-control" required id="inputTelefoneAluno" placeholder="9999999">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputCEP">Email</label>
+                        <input type="email" class="form-control" required id="inputEmailAluno" placeholder="text@gmail.com">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputCEP">Bairro</label>
+                        <input type="text" class="form-control" required id="inputBairroAluno" placeholder="Centro">
+                    </div>
+                </div>
 
-        <button type="button" id="btn-Aluno" class="btn btn-primary btn-lg">Alunos</button>
+                <button type="submit" id="saveAluno" class="btn btn-primary">Adicionar</button>
+            </form>
+
+        </div>
+        <!-- ^ Bloco de adicionar aluno acaba aqui ^-->
+
+        <div id="listAluno">
+            <h2>Alunos</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="col-xs-2" scope="col">#</th>
+                        <th class="col-xs-2" scope="col">Aluno</th>
+                        <th scope="col">Telefone</th>
+                        <th class="col-lg-2" scope="col">a</th>
+                    </tr>
+                </thead>
+                <tbody id="itensDataAluno">
+
+                </tbody>
+            </table>
+
+        </div>
+        <script src="./js/aluno.js"></script>
+
     </div>
-
-
 
 
 

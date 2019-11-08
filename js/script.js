@@ -1,8 +1,46 @@
+$(document).ready(function() {
+
+    $("#btn-Aluno").click(function() {
+        $("#form-addAluno").css("display", "block");
+    });
+
+    $("#btn-Escola").click(function() {
+        $("#form-addEscola").css("display", "block");
+    });
+
+    $('#btn-menu').click(function() {
+        $('#divMenu').css("display", "block");
+        $('#map').css("display", "none");
+        $('#divMenu').animate({
+            height: "80%",
+
+
+        });
+
+    });
+
+
+    /*$('#btn-menu').click(function() {
+        $('#divMenu').toggle(1000);
+        $('#divMenu').addClass('efeito');
+        });
+    */
+
+
+
+});
+
+
+
+
 var map, infoWindow;
 
 function createMap() {
     var options = {
-        center: { lat: -29.658842, lng: -50.785850 },
+        center: {
+            lat: -29.658842,
+            lng: -50.785850
+        },
         zoom: 14,
         panControl: false,
         zoomControl: false,
@@ -41,30 +79,4 @@ function handleLocationError(content, position) {
     infoWindow.setPosition(position);
     infoWindow.setContent(content);
     infoWindow.open(map);
-}
-
-//Script para salvar formulario de adicionar aluno
-function salvarAluno() {
-    var nomeCompletoAluno = document.getElementById("nomeCompletoAluno");
-    var celularAluno = document.getElementById("celularAluno");
-    var ruaAluno = document.getElementById("ruaAluno");
-    var numeroCasaAluno = document.getElementById("numeroCasaAluno");
-    var cidadeAluno = document.getElementById("cidadeAluno");
-    var estadoAluno = document.getElementById("estadoAluno");
-    var cepAluno = document.getElementById("cepAluno");
-
-
-}
-
-//Script para salvar formulario de adicionar escola
-function salvarEscola() {
-    var nomeCompletoEscola = document.getElementById("nomeCompletoEscola");
-    var ruaEscola = document.getElementById("ruaEscola");
-    var numeroEscola = document.getElementById("numeroEscola");
-    var cidadeEscola = document.getElementById("cidadeEscola");
-    var estadoEscola = document.getElementById("estadoEscola");
-    var cepEscola = document.getElementById("cepEscola");
-
-
-
 }

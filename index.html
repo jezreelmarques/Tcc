@@ -6,30 +6,125 @@
     <title>Criação de Sites</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
     <link href="./css/style.css" rel="stylesheet" />
-    <script src="js/script.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.4.1.js">
     </script>
+    <script src="js/script.js"></script>
 
 </head>
 
 <body>
 
+
+
+
     <div class="botaopesquisa">
         <div class="botao">
-            <a href="includes/areaMenu.html"><button type="button" class="btn-menu btn btn-primary btn-block">MENU</button></a>
-        </div>
-        <div class="pesquisa">
-            <input class="form-control" id="search" type="text" placeholder="Search..." />
+            <input type="image" id="btn-menu" src="imagens/menu.png" name="imagesubmit1">
         </div>
     </div>
 
-    <div id="map" style="width:100%;height:700px;"> </div>
 
-
-
-
-
+    <div id="map"> </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAz6PXPByo9Ih_Taqjq0EVDF8OotH3q3ac&callback=createMap"></script>
+
+
+
+    <div id="divMenu">
+        <div id="divSubMenu">
+            <button type="button" id="btn-Aluno" class="btn btn-primary btn-lg">Alunos</button>
+
+            <!-- Este bloco de adiucionar aluno vira display none ao clicar botao-->
+            <div id="form-addAluno">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Nome completo</label>
+                            <input type="name" class="form-control" required id="nomeCompletoAluno" placeholder="Joao da Silva">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Celular</label>
+                            <input type="number" class="form-control" required id="celularAluno" placeholder="51999999999">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress">Rua</label>
+                        <input type="text" class="form-control" required id="ruaAluno" placeholder="Rua dos Bobos">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress2">Numero da casa</label>
+                        <input type="number" class="form-control" required id="numeroCasaAluno" placeholder="122">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputCity">Cidade</label>
+                            <input type="text" class="form-control" required id="cidadeAluno" placeholder="Taquara">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputCity">Estado codigo</label>
+                            <input type="text" class="form-control" required id="estadoAluno" placeholder="RS">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputCEP">CEP</label>
+                            <input type="number" class="form-control" required id="cepAluno" placeholder="95630000">
+                        </div>
+                    </div>
+
+                    <button type="submit" onclick="salvarAluno();" class="btn btn-primary">Adicionar</button>
+                </form>
+
+            </div>
+            <!-- ^ Bloco de adicionar aluno acaba aqui ^-->
+
+            <!-- Este bloco de adiucionar escola vira display none ao clicar botao-->
+            <button type="button" id="btn-Escola" class="btn btn-primary btn-lg">Escolas</button>
+            <div id="form-addEscola">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Nome da Escola</label>
+                            <input type="name" class="form-control" required id="nomeCompletoEscola" placeholder="CIMOL">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress">Rua</label>
+                        <input type="text" class="form-control" required id="ruaEscola" placeholder="Rua dos Bois">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress2">Numero da Escola</label>
+                        <input type="number" class="form-control" required id="numeroEscola" placeholder="122">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputCity">Cidade</label>
+                            <input type="text" class="form-control" required id="cidadeEscola" placeholder="Taquara">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputCity">Estado codigo</label>
+                            <input type="text" class="form-control" required id="estadoEscola" placeholder="RS">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputCEP">CEP</label>
+                            <input type="number" class="form-control" required id="cepEscola" placeholder="95630000">
+                        </div>
+                    </div>
+
+                    <button type="submit" onclick="salvarEscola();" class="btn btn-primary">Adicionar</button>
+                </form>
+
+            </div>
+            <!-- ^ Bloco de adicionar escola acaba aqui ^-->
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
 
 
 </body>

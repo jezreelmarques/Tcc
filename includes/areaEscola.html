@@ -11,7 +11,44 @@
 </head>
 
 <body>
+    <!-- Este bloco de adiucionar escola vira display none ao clicar botao-->
 
+    <div id="form-addEscola">
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Nome da Escola</label>
+                    <input type="name" class="form-control" required id="nomeCompletoEscola" placeholder="CIMOL">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Rua</label>
+                <input type="text" class="form-control" required id="ruaEscola" placeholder="Rua dos Bois">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress2">Numero da Escola</label>
+                <input type="number" class="form-control" required id="numeroEscola" placeholder="122">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputCity">Cidade</label>
+                    <input type="text" class="form-control" required id="cidadeEscola" placeholder="Taquara">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputCity">Estado codigo</label>
+                    <input type="text" class="form-control" required id="estadoEscola" placeholder="RS">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputCEP">CEP</label>
+                    <input type="number" class="form-control" required id="cepEscola" placeholder="95630000">
+                </div>
+            </div>
+
+            <button type="submit" onclick="salvarEscola();" class="btn btn-primary">Adicionar</button>
+        </form>
+
+    </div>
+    <!-- ^ Bloco de adicionar escola acaba aqui ^-->
 
 </body>
 

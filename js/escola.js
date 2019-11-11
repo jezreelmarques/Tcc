@@ -110,7 +110,7 @@ Escola = function(id, nome, email, telefone, logradouro, numero, bairro, cidade)
                     console.log(rows);
                     callback(rows);
                 }, function(transaction, error) {
-                    //updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
+                    updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
                     console.log("Erro: " + error.code + "<br>Mensagem: " + error.message);
                     callback(false);
                 });
@@ -125,8 +125,26 @@ Escola = function(id, nome, email, telefone, logradouro, numero, bairro, cidade)
     this.update = function() {
 
     };
-    this.delete = function() {
 
+    this.delete = function(id, callback) {
+        query = "DELETE FROM escola WHERE id=" + id + " ;";
+        console.log(query);
+        try {
+            sqlLite.localDB.transaction(function(transaction) {
+                transaction.executeSql(query, [], function(transaction, results) {
+                    console.log(transaction);
+                    if (!results.rowsAffected) {
+                        console.log("Erro: Delete não realizado.");
+                    } else {
+                        console.log("Linhas deletadas:" + results.rowsAffected);
+                    }
+                });
+
+            });
+        } catch (e) {
+
+            console.log("Erro: DELETE não realizado " + e + ".");
+        }
     };
 
 }
@@ -172,10 +190,21 @@ function listEscola() {
                     "</td><td>" + resultado[i].teleone +
                     // "</td><td>" + resultado[i].email +
                     //"</td><td>" + resultado[i].logradouro + ", " + resultado[i].numero + ", " + resultado[i].bairro + ", " + resultado[i].cidade +
-                    "</td><td><a href='#' id='" + resultado[i].id + "' class='excluir' >x</a></td>" +
+                    "</td><td>" +
+                    "<button id='" + resultado[i].id + "' class='excluir'>x</button>" +
+                    "</td>" +
                     "</tr>"
                 );
             }
+            $(document).on('click', '.excluir', function() {
+                element = $(this);
+
+                id = element.attr('id');
+                escola.delete(id, function() {
+                    list();
+                });
+
+            });
         }
     });
 }

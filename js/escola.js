@@ -191,7 +191,7 @@ function listEscola() {
                     // "</td><td>" + resultado[i].email +
                     //"</td><td>" + resultado[i].logradouro + ", " + resultado[i].numero + ", " + resultado[i].bairro + ", " + resultado[i].cidade +
                     "</td><td>" +
-                    "<button id='" + resultado[i].id + "' class='excluir'>x</button>" +
+                    "<button id='" + resultado[i].id + "' class='excluir'>Excluir</button>" +
                     "</td>" +
                     "</tr>"
                 );

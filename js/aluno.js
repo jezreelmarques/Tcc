@@ -111,6 +111,7 @@ Aluno = function(id, nome, email, telefone, logradouro, numero, bairro, cidade) 
                     callback(rows);
                 }, function(transaction, error) {
                     updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
+                    console.log("Erro: " + error.code + "<br>Mensagem: " + error.message);
                     callback(false);
                 });
             });
@@ -124,8 +125,26 @@ Aluno = function(id, nome, email, telefone, logradouro, numero, bairro, cidade) 
     this.update = function() {
 
     };
-    this.delete = function() {
 
+    this.delete = function(id, callback) {
+        query = "DELETE FROM aluno WHERE id=" + id + " ;";
+        console.log(query);
+        try {
+            sqlLite.localDB.transaction(function(transaction) {
+                transaction.executeSql(query, [], function(transaction, results) {
+                    console.log(transaction);
+                    if (!results.rowsAffected) {
+                        console.log("Erro: Delete não realizado.");
+                    } else {
+                        console.log("Linhas deletadas:" + results.rowsAffected);
+                    }
+                });
+
+            });
+        } catch (e) {
+
+            console.log("Erro: DELETE não realizado " + e + ".");
+        }
     };
 
 }
@@ -137,42 +156,58 @@ $("#add").click(function() {
     $("#input").css("display", "block");
 });
 
-$("#save").click(function() {
+$("#saveAluno").click(function() {
 
     aluno = new Aluno(
         null,
         $("#inputNomeAluno").val(),
-        $("#inputEmail").val(),
-        $("#inputTelefone").val(),
-        $("#inputlogradouro").val(),
-        $("#inputNumero").val(),
-        $("#inputBairro").val(),
-        $("#inputCidade").val()
+        $("#inputEmailAluno").val(),
+        $("#inputTelefoneAluno").val(),
+        $("#inputLogradouroAluno").val(),
+        $("#inputNumeroAluno").val(),
+        $("#inputBairroAluno").val(),
+        $("#inputCidadeAluno").val()
     );
     aluno.insert();
 });
 
 
+$(".excluirAluno").click(function() {
+    console.log(this.attr('id'));
+    return false;
+});
 
-function list() {
+function listAluno() {
     aluno = new Aluno();
     aluno.findAll(function(resultado) {
         if (resultado) {
-            $("#itensData").empty();
+            $("#itensDataAluno").empty();
             for (i = 0; i < resultado.length; i++) {
                 console.log(resultado[i]);
-                $("#itensData").append(
+                $("#itensDataAluno").append(
                     "<tr><td>" + resultado[i].id +
                     "</td><td>" + resultado[i].nome +
-                    "</td><td>" + resultado[i].email +
-                    "</td><td>" + resultado[i].telefone +
-                    "</td><td>" + resultado[i].logradouro + ", " + resultado[i].numero + ", " + resultado[i].bairro + ", " + resultado[i].cidade +
-                    "</td><td></td>" +
+                    "</td><td>" + resultado[i].teleone +
+                    // "</td><td>" + resultado[i].email +
+                    //"</td><td>" + resultado[i].logradouro + ", " + resultado[i].numero + ", " + resultado[i].bairro + ", " + resultado[i].cidade +
+                    "</td><td>" +
+                    "<button id='" + resultado[i].id + "' class='excluirAluno'>Excluir</button>" +
+
+                    "</td>" +
                     "</tr>"
                 );
             }
+            $(document).on('click', '.excluirAluno', function() {
+                element = $(this);
+
+                id = element.attr('id');
+                aluno.delete(id, function() {
+                    list();
+                });
+
+            });
         }
     });
 }
 
-list();
+listAluno();

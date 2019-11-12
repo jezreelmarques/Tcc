@@ -134,3 +134,7 @@ ul {
 th {
     padding: 5px;
 }
+
+.excluirAluno {
+    background-image: url("imagens/menu.png");
+}

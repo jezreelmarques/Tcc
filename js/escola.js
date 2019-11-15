@@ -1,7 +1,4 @@
-var sqlLite = new SqlLite(shortName, version, displayName, maxSize);
-sqlLite.start();
-
-Escola = function(id, nome, email, telefone, logradouro, numero, bairro, cidade) {
+var Escola = function(id, nome, email, telefone, logradouro, numero, bairro, cidade) {
     this.id = id;
     this.nome = nome;
     this.email = email;
@@ -51,8 +48,8 @@ Escola = function(id, nome, email, telefone, logradouro, numero, bairro, cidade)
             //+"(?, ?,?, ?, ?, ?, ?);";
             +
             "('" + this.nome + "', '" + this.email + "','" + this.telefone + "', '" + this.logradouro + "', '" + this.numero + "', '" + this.bairro + "', '" + this.cidade + "');";
-        console.log(query);
-        console.log(this.nome);
+        // console.log(query);
+        //console.log(this.nome);
         try {
             sqlLite.localDB.transaction(function(transaction) {
                 transaction.executeSql(
@@ -97,7 +94,7 @@ Escola = function(id, nome, email, telefone, logradouro, numero, bairro, cidade)
     this.findAll = function(callback) {
 
         query = "SELECT * FROM escola;";
-        console.log(query);
+        //console.log(query);
         try {
             sqlLite.localDB.transaction(function(transaction) {
 
@@ -107,11 +104,11 @@ Escola = function(id, nome, email, telefone, logradouro, numero, bairro, cidade)
                         rows.push(results.rows.item(i));
 
                     }
-                    console.log(rows);
+                    //console.log(rows);
                     callback(rows);
                 }, function(transaction, error) {
                     updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
-                    console.log("Erro: " + error.code + "<br>Mensagem: " + error.message);
+                    //console.log("Erro: " + error.code + "<br>Mensagem: " + error.message);
                     callback(false);
                 });
             });
@@ -173,7 +170,7 @@ $("#saveEscola").click(function() {
 
 
 $(".excluir").click(function() {
-    console.log(this.attr('id'));
+    //console.log(this.attr('id'));
     return false;
 });
 

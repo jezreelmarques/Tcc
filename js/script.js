@@ -27,6 +27,7 @@ $(document).ready(function() {
         $("#form-addAluno").hide();
         $("#btn-Aluno").show();
         $("#btn-AlunoVoltar").hide();
+
     });
 
 
@@ -68,9 +69,35 @@ $(document).ready(function() {
         $("#divMenu").css("display", "none");
     });
 
+    $("#nav-rota").click(function() {
+        listRota();
+        $("#rotas").css("display", "block");
+        $("#divMenu").css("display", "none");
+    });
 
 
 
+
+
+    let aluno = new Aluno();
+    aluno.findAll(function(resultado) {
+        if (resultado) {
+            for (i = 0; i < resultado.length; i++) {
+                $("#rotas select[name='aluno']").append('<option value=' + resultado[i].id + '>' + resultado[i].nome + '</option')
+            }
+        }
+    });
+
+    setTimeout(function() {
+        let escola = new Escola();
+        escola.findAll(function(resultado) {
+            if (resultado) {
+                for (i = 0; i < resultado.length; i++) {
+                    $("#rotas select[name='escola']").append('<option value=' + resultado[i].id + '>' + resultado[i].nome + '</option')
+                }
+            }
+        });
+    }, 100);
 
 
 });

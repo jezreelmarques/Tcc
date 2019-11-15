@@ -11,8 +11,16 @@
     </script>
     <script src="./js/config.js"></script>
     <script src="./js/sql-lite.js"></script>
-    <script src="js/script.js"></script>
 
+    <script>
+        var sqlLite = new SqlLite(shortName, version, displayName, maxSize);
+        sqlLite.start();
+        console.log(sqlLite);
+    </script>
+    <script src="./js/escola.js"></script>
+    <script src="./js/aluno.js"></script>
+    <script src="js/rota.js"></script>
+    <script src="js/script.js"></script>
 
 </head>
 
@@ -41,7 +49,7 @@
 
             <!-- ACTUAL NAVIGATION MENU -->
             <ul class="nav_menu" id="menu" tabindex="-1" aria-label="main navigation">
-                <li class="nav__item"><a href="#" id="nav-">ROTAS</a></li>
+                <li class="nav__item"><a href="#" id="nav-rota">ROTAS</a></li>
                 <li class="nav__item"><a href="#" id="nav-aluno">ALUNOS</a></li>
                 <li class="nav__item"><a href="#" id="nav-escola">ESCOLAS</a></li>
                 <li class="nav__item"><a href="#" id="nav-">SOBRE</a></li>
@@ -114,7 +122,6 @@
             </table>
 
         </div>
-        <script src="./js/escola.js"></script>
 
     </div>
 
@@ -187,17 +194,62 @@
             </table>
 
         </div>
-        <script src="./js/aluno.js"></script>
+
 
     </div>
 
 
+    <div id="rotas">
+        <button type="button" id="btn-Rota" class="btn btn-primary btn-lg">Adicionar Rota</button>
+        <!-- Este bloco de adiucionar rota vira display none ao clicar botao-->
+        <div id="form-addRota">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <select id="selectRotaAluno" name="aluno" multiple="multiple"></select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <select id="selectRotaEscola" name="escola"></select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <select id="selectRotaTurno" name="turno">
+                            <option value='manha'>Manhã</option>
+                            <option value='tarde'>Tarde</option>
+                            <option value='noite'>Noite</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" id="saveRota" class="btn btn-primary">Adicionar</button>
+            </form>
+
+        </div>
+        <!-- ^ Bloco de adicionar aluno acaba aqui ^-->
+
+        <div id="listRota">
+            <h2>Rotas</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="col-xs-2" scope="col">#</th>
+                        <th class="col-xs-2" scope="col">Escola</th>
+                        <th class="col-xs-2" scope="col">Turno</th>
+                    </tr>
+                </thead>
+                <tbody id="itensDataRota">
+
+                </tbody>
+            </table>
+
+        </div>
 
 
-
-
-
+    </div>
 
 </body>
 
-</html>
+</htm>

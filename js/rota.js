@@ -235,8 +235,15 @@ function listRota() {
                 rota.find(function(data) {
                     // Iniciando a rota.
                     console.log(data[id].logradouro);
+
+
                 }, id)
             });
+
+
+
+
+
 
             $(document).on('click', '.excluirRota', function() {
                 element = $(this);
@@ -245,6 +252,22 @@ function listRota() {
                     list();
                 });
 
+
+            });
+
+            $(".iniciarRota").click(function() {
+                $('#divMenu').animate({
+                    height: "0%",
+                });
+                $('#map').css("display", "block");
+                $('#btn-menu').css("display", "block");
+                $('#btn-menuVoltar').css("display", "none");
+                $('#divMenu').css("display", "none");
+                $("#escolas").css("display", "none");
+                $("#alunos").css("display", "none");
+                $("#form-addEscola").css("display", "none");
+                $("#form-addRota").css("display", "none");
+                $("#rotas").css("display", "none");
 
             });
 

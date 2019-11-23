@@ -55,6 +55,8 @@ $(document).ready(function() {
         $("#escolas").css("display", "none");
         $("#alunos").css("display", "none");
         $("#form-addEscola").css("display", "none");
+        $("#form-addRota").css("display", "none");
+        $("#rotas").css("display", "none");
 
 
     });
@@ -74,6 +76,15 @@ $(document).ready(function() {
         $("#rotas").css("display", "block");
         $("#divMenu").css("display", "none");
     });
+
+    $("#btn-Rota").click(function() {
+        $("#form-addRota").css("display", "block");
+
+    });
+
+
+
+
 
 
 

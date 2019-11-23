@@ -142,3 +142,11 @@ th {
 #Rotas {
     display: none;
 }
+
+#form-addRota {
+    display: none;
+}
+
+#rotas {
+    background-color: #368887;
+}

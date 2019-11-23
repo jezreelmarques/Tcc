@@ -185,7 +185,9 @@ var Rota = function(id, id_escola, turno, id_alunos) {
     };
 
     this.delete = function(id, callback) {
-        query = "DELETE FROM rota WHERE id=" + id + " ; DELETE from aluno_rota where id_rota = " + id + ";";
+        query = "DELETE FROM rota WHERE id=" + id + ";";
+
+
         console.log(query);
         try {
             sqlLite.localDB.transaction(function(transaction) {
@@ -217,24 +219,41 @@ function listRota() {
                     "<tr><td>" + resultado[i].id +
                     "</td><td>" + resultado[i].nome +
                     "</td><td>" + resultado[i].turno +
+                    "</td><td>" +
                     "<button data-id='" + resultado[i].id + "' class='iniciarRota'>Iniciar</button>" +
+                    "</td><td>" +
+                    "<button id='" + resultado[i].id + "' class='excluirRota'>Excluir</button>" +
                     "</td>" +
                     "</tr>"
                 );
             }
+
             $(document).on('click', '.iniciarRota', function() {
                 element = $(this);
-
                 id = element.data('id');
 
                 rota.find(function(data) {
                     // Iniciando a rota.
-                    console.log(data);
+                    console.log(data[id].logradouro);
                 }, id)
             });
+
+            $(document).on('click', '.excluirRota', function() {
+                element = $(this);
+                id = element.attr('id');
+                rota.delete(id, function() {
+                    list();
+                });
+
+
+            });
+
         }
     });
 }
+
+
+
 
 $(document).ready(function() {
 

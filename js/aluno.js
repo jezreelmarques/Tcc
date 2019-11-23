@@ -178,13 +178,15 @@ $(document).ready(function() {
                 for (i = 0; i < resultado.length; i++) {
                     console.log(resultado[i]);
                     $("#itensDataAluno").append(
-                        "<tr><td>" + resultado[i].id +
-                        "</td><td>" + resultado[i].nome +
+                        "<tr><td>" + resultado[i].nome +
+                        //"</td><td>" + resultado[i].nome +
                         "</td><td>" + resultado[i].teleone +
                         // "</td><td>" + resultado[i].email +
                         //"</td><td>" + resultado[i].logradouro + ", " + resultado[i].numero + ", " + resultado[i].bairro + ", " + resultado[i].cidade +
                         "</td><td>" +
                         "<button data-id='" + resultado[i].id + "' class='excluirAluno'>Excluir</button>" +
+                        "</td><td>" +
+                        "<button data-id='" + resultado[i].id + "' class='editarAluno'>Editar</button>" +
 
                         "</td>" +
                         "</tr>"

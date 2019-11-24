@@ -211,6 +211,7 @@ var Rota = function(id, id_escola, turno, id_alunos) {
 
 function listRota() {
     var rota = new Rota();
+
     rota.findAll(function(resultado) {
         if (resultado) {
             $("#itensDataRota").empty();
@@ -231,13 +232,13 @@ function listRota() {
             $(document).on('click', '.iniciarRota', function() {
                 element = $(this);
                 id = element.data('id');
-
                 rota.find(function(data) {
                     // Iniciando a rota.
                     console.log(data[id].logradouro);
-
+                    address = data[id].cidade + data[id].logradouro + data[id].numero + data[id].bairro;
 
                 }, id)
+
             });
 
 

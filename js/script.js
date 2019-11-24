@@ -150,7 +150,6 @@ $(document).ready(function() {
         overviewMapControl: false,
         rotateControl: false
     };
-
     var map = new google.maps.Map(document.getElementById('map'), options);
     var directionsService = new google.maps.DirectionsService();
     var directionsRenderer = new google.maps.DirectionsRenderer();
@@ -159,6 +158,7 @@ $(document).ready(function() {
     // Valor default, a função abaixo vai sobreescrever se o usuário permitir
     // o geolocation.
     var my_location = null;
+
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(p) {
@@ -179,14 +179,14 @@ $(document).ready(function() {
         my_location = 'Taquara, RS Brasil';
     }
 
-    //
+
     function handleLocationError(content, position) {
         infoWindow.setPosition(position);
         infoWindow.setContent(content);
         infoWindow.open(map);
     }
 
-    //
+
     function doDirection(address) {
         var request = {
             origin: my_location,
@@ -209,6 +209,18 @@ $(document).ready(function() {
             }
         });
     }
+
+
+    $("#itensDataRota").click(function(e) {
+        e.preventDefault();
+        //var address = $("[name='address']", this).val();
+        //address = 'Parobe, RS';
+        address = address;
+        if (address) {
+            doDirection(address);
+        }
+    });
+
 
 
 })();

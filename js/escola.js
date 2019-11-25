@@ -55,13 +55,13 @@ var Escola = function(id, nome, email, telefone, logradouro, numero, bairro, cid
                 transaction.executeSql(
                     query,
                     /*[
-                    	this.nome,
-                    	this.email, 
-                    	this.telefone, 
-                    	this.logradouro,  
-                    	this.numero, 
-                    	this.bairro, 
-                    	this.cidade
+                      this.nome,
+                      this.email, 
+                      this.telefone, 
+                      this.logradouro,  
+                      this.numero, 
+                      this.bairro, 
+                      this.cidade
                     ]*/
                     [],
                     function(transaction, results) {
@@ -107,13 +107,13 @@ var Escola = function(id, nome, email, telefone, logradouro, numero, bairro, cid
                     //console.log(rows);
                     callback(rows);
                 }, function(transaction, error) {
-                    updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
+                    sqlLite.updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
                     //console.log("Erro: " + error.code + "<br>Mensagem: " + error.message);
                     callback(false);
                 });
             });
         } catch (e) {
-            updateStatus("Error: SELECT não realizado " + e + ".");
+            sqlLite.updateStatus("Error: SELECT não realizado " + e + ".");
             callback(false);
         }
 

@@ -85,7 +85,6 @@ $(document).ready(function() {
     $(".iniciarRota").click(function() {
         $('#divMenu').animate({
             height: "0%",
-
         });
         $('#map').css("display", "block");
         $('#btn-menu').css("display", "block");
@@ -97,6 +96,7 @@ $(document).ready(function() {
         $("#form-addRota").css("display", "none");
         $("#rotas").css("display", "none");
 
+        alert("AQUI");
     });
 
 
@@ -111,6 +111,7 @@ $(document).ready(function() {
     let aluno = new Aluno();
     aluno.findAll(function(resultado) {
         if (resultado) {
+            $("#rotas select[name='aluno']").html('');
             for (i = 0; i < resultado.length; i++) {
                 $("#rotas select[name='aluno']").append('<option value=' + resultado[i].id + '>' + resultado[i].nome + '</option')
             }
@@ -121,6 +122,7 @@ $(document).ready(function() {
         let escola = new Escola();
         escola.findAll(function(resultado) {
             if (resultado) {
+                $("#rotas select[name='escola']").html('');
                 for (i = 0; i < resultado.length; i++) {
                     $("#rotas select[name='escola']").append('<option value=' + resultado[i].id + '>' + resultado[i].nome + '</option')
                 }
@@ -133,7 +135,7 @@ $(document).ready(function() {
 
 
 
-(function() {
+$(document).ready(function() {
 
     // Inicia o mapa.
     var options = {
@@ -187,7 +189,7 @@ $(document).ready(function() {
     }
 
 
-    function doDirection(address) {
+    function doDirection(address, waypoints = []) {
         var request = {
             origin: my_location,
             destination: address,
@@ -195,6 +197,11 @@ $(document).ready(function() {
             travelMode: 'DRIVING',
             unitSystem: google.maps.UnitSystem.METRIC
         };
+        if (waypoints) {
+            request.waypoints = waypoints;
+            request.optimizeWaypoints = true;
+        }
+        console.log(request);
 
         directionsService.route(request, function(response, status) {
             console.log(response);
@@ -203,24 +210,34 @@ $(document).ready(function() {
                 // Pega o tempo e a distancia.
                 var duration = response.routes[0].legs[0].duration.text;
                 var distance = response.routes[0].legs[0].distance.text;
-                alert(`distancia: ${distance}, duração: ${duration}`);
+                //alert(`distancia: ${distance}, duração: ${duration}`);
             } else if (status = 'NOT_FOUND') {
                 alert("Endereço não encontrado.");
             }
         });
     }
 
+    // Inicia a rota.
+    $('#itensDataRota').on('click', '.iniciarRota', function() {
+        // Pega o id da rota.
+        let id = $(this).data('id');
+        // Carrega a rota pelo ID.
+        var rota = new Rota();
+        rota.find(function(data) {
+            // Data contém todos os dados da rota.
+            // Pega todos os endereços de alunos.
+            let waypoints = [];
+            for (i in data[id].alunos) {
+                let aluno = data[id].alunos[i];
+                waypoints.push({
+                    location: `${aluno.logradouro}, ${aluno.numero}, ${aluno.bairro}, ${aluno.cidade}`,
+                    stopover: true
+                });
+            }
 
-    $("#itensDataRota").click(function(e) {
-        e.preventDefault();
-        //var address = $("[name='address']", this).val();
-        //address = 'Parobe, RS';
-        address = address;
-        if (address) {
-            doDirection(address);
-        }
+            let escola = data[id];
+            let address = `${escola.logradouro}, ${escola.numero}, ${escola.bairro}, ${escola.cidade}`;
+            doDirection(address, waypoints);
+        }, id);
     });
-
-
-
-})();
+});

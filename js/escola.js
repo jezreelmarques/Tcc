@@ -48,8 +48,6 @@ var Escola = function(id, nome, email, telefone, logradouro, numero, bairro, cid
             //+"(?, ?,?, ?, ?, ?, ?);";
             +
             "('" + this.nome + "', '" + this.email + "','" + this.telefone + "', '" + this.logradouro + "', '" + this.numero + "', '" + this.bairro + "', '" + this.cidade + "');";
-        // console.log(query);
-        //console.log(this.nome);
         try {
             sqlLite.localDB.transaction(function(transaction) {
                 transaction.executeSql(
@@ -94,7 +92,6 @@ var Escola = function(id, nome, email, telefone, logradouro, numero, bairro, cid
     this.findAll = function(callback) {
 
         query = "SELECT * FROM escola;";
-        //console.log(query);
         try {
             sqlLite.localDB.transaction(function(transaction) {
 
@@ -104,7 +101,6 @@ var Escola = function(id, nome, email, telefone, logradouro, numero, bairro, cid
                         rows.push(results.rows.item(i));
 
                     }
-                    //console.log(rows);
                     callback(rows);
                 }, function(transaction, error) {
                     sqlLite.updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
@@ -125,11 +121,9 @@ var Escola = function(id, nome, email, telefone, logradouro, numero, bairro, cid
 
     this.delete = function(id, callback) {
         query = "DELETE FROM escola WHERE id=" + id + " ;";
-        console.log(query);
         try {
             sqlLite.localDB.transaction(function(transaction) {
                 transaction.executeSql(query, [], function(transaction, results) {
-                    console.log(transaction);
                     if (!results.rowsAffected) {
                         console.log("Erro: Delete não realizado.");
                     } else {
@@ -147,31 +141,33 @@ var Escola = function(id, nome, email, telefone, logradouro, numero, bairro, cid
 }
 
 
+$(document).ready(function() {
+  $("#add").click(function() {
 
-$("#add").click(function() {
+      $("#input").css("display", "block");
+  });
 
-    $("#input").css("display", "block");
-});
+  $("#saveEscola").click(function(e) {
+      e.preventDefault();
+      escola = new Escola(
+          null,
+          $("#inputNomeEscola").val(),
+          $("#inputEmailEscola").val(),
+          $("#inputTelefoneEscola").val(),
+          $("#inputlogradouroEscola").val(),
+          $("#inputNumeroEscola").val(),
+          $("#inputBairroEscola").val(),
+          $("#inputCidadeEscola").val()
+      );
+      escola.insert();
+      setTimeout(listEscola(), 100);
+      $("#form-addEscola").hide();
+  });
 
-$("#saveEscola").click(function() {
 
-    escola = new Escola(
-        null,
-        $("#inputNomeEscola").val(),
-        $("#inputEmailEscola").val(),
-        $("#inputTelefoneEscola").val(),
-        $("#inputlogradouroEscola").val(),
-        $("#inputNumeroEscola").val(),
-        $("#inputBairroEscola").val(),
-        $("#inputCidadeEscola").val()
-    );
-    escola.insert();
-});
-
-
-$(".excluir").click(function() {
-    //console.log(this.attr('id'));
-    return false;
+  $(".excluir").click(function() {
+      return false;
+  });
 });
 
 function listEscola() {
@@ -180,7 +176,6 @@ function listEscola() {
         if (resultado) {
             $("#itensDataEscola").empty();
             for (i = 0; i < resultado.length; i++) {
-                console.log(resultado[i]);
                 $("#itensDataEscola").append(
                     "<tr><td>" + resultado[i].id +
                     "</td><td>" + resultado[i].nome +
@@ -205,5 +200,3 @@ function listEscola() {
         }
     });
 }
-
-listEscola();

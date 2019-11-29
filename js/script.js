@@ -64,17 +64,19 @@ $(document).ready(function() {
     $("#nav-escola").click(function() {
         $("#escolas").css("display", "block");
         $("#divMenu").css("display", "none");
+        listEscola();
     });
 
     $("#nav-aluno").click(function() {
         $("#alunos").css("display", "block");
         $("#divMenu").css("display", "none");
+        listAluno();
     });
 
     $("#nav-rota").click(function() {
-        listRota();
         $("#rotas").css("display", "block");
         $("#divMenu").css("display", "none");
+        listRota();
     });
 
     $("#btn-Rota").click(function() {
@@ -201,10 +203,8 @@ $(document).ready(function() {
             request.waypoints = waypoints;
             request.optimizeWaypoints = true;
         }
-        console.log(request);
 
         directionsService.route(request, function(response, status) {
-            console.log(response);
             if (status == 'OK') {
                 directionsRenderer.setDirections(response);
                 // Pega o tempo e a distancia.

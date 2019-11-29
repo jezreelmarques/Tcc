@@ -48,20 +48,18 @@ var Aluno = function(id, nome, email, telefone, logradouro, numero, bairro, cida
             //+"(?, ?,?, ?, ?, ?, ?);";
             +
             "('" + this.nome + "', '" + this.email + "','" + this.telefone + "', '" + this.logradouro + "', '" + this.numero + "', '" + this.bairro + "', '" + this.cidade + "');";
-        //console.log(query);
-        //console.log(this.nome);
         try {
             var r = sqlLite.localDB.transaction(function(transaction) {
                 return transaction.executeSql(
                     query,
                     /*[
-                    	this.nome,
-                    	this.email, 
-                    	this.telefone, 
-                    	this.logradouro,  
-                    	this.numero, 
-                    	this.bairro, 
-                    	this.cidade
+                      this.nome,
+                      this.email, 
+                      this.telefone, 
+                      this.logradouro,  
+                      this.numero, 
+                      this.bairro, 
+                      this.cidade
                     ]*/
                     [],
                     function(transaction, results) {
@@ -78,7 +76,6 @@ var Aluno = function(id, nome, email, telefone, logradouro, numero, bairro, cida
                     sqlLite.errorHandler
                 );
             });
-            console.log(r);
             return false;
         } catch (e) {
             sqlLite.updateStatus("Erro: INSERT não realizado " + e + ".");
@@ -95,7 +92,6 @@ var Aluno = function(id, nome, email, telefone, logradouro, numero, bairro, cida
     this.findAll = function(callback) {
 
         query = "SELECT * FROM aluno;";
-        //console.log(query);
         try {
             sqlLite.localDB.transaction(function(transaction) {
 
@@ -105,11 +101,9 @@ var Aluno = function(id, nome, email, telefone, logradouro, numero, bairro, cida
                         rows.push(results.rows.item(i));
 
                     }
-                    //console.log(rows);
                     callback(rows);
                 }, function(transaction, error) {
                     sqlLite.updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
-                    //console.log("Erro: " + error.code + "<br>Mensagem: " + error.message);
                     callback(false);
                 });
             });
@@ -126,11 +120,9 @@ var Aluno = function(id, nome, email, telefone, logradouro, numero, bairro, cida
 
     this.delete = function(id, callback) {
         query = "DELETE FROM aluno WHERE id=" + id + " ;";
-        //console.log(query);
         try {
             sqlLite.localDB.transaction(function(transaction) {
                 transaction.executeSql(query, [], function(transaction, results) {
-                    console.log(transaction);
                     if (!results.rowsAffected) {
                         console.log("Erro: Delete não realizado.");
                     } else {
@@ -141,69 +133,66 @@ var Aluno = function(id, nome, email, telefone, logradouro, numero, bairro, cida
             });
         } catch (e) {
 
-            //console.log("Erro: DELETE não realizado " + e + ".");
+            console.log("Erro: DELETE não realizado " + e + ".");
         }
     };
 
 }
 
-
 $(document).ready(function() {
-    $("#add").click(function() {
 
-        $("#input").css("display", "block");
-    });
+  $("#add").click(function() {
+      $("#input").css("display", "block");
+  });
 
-    $("#saveAluno").click(function(e) {
-        e.preventDefault();
-        aluno = new Aluno(
-            null,
-            $("#inputNomeAluno").val(),
-            $("#inputEmailAluno").val(),
-            $("#inputTelefoneAluno").val(),
-            $("#inputLogradouroAluno").val(),
-            $("#inputNumeroAluno").val(),
-            $("#inputBairroAluno").val(),
-            $("#inputCidadeAluno").val()
-        );
-        aluno.insert();
-    });
-
-
-    function listAluno() {
-        var aluno = new Aluno();
-        aluno.findAll(function(resultado) {
-            if (resultado) {
-                $("#itensDataAluno").empty();
-                for (i = 0; i < resultado.length; i++) {
-                    console.log(resultado[i]);
-                    $("#itensDataAluno").append(
-                        "<tr><td>" + resultado[i].nome +
-                        //"</td><td>" + resultado[i].nome +
-                        "</td><td>" + resultado[i].teleone +
-                        // "</td><td>" + resultado[i].email +
-                        //"</td><td>" + resultado[i].logradouro + ", " + resultado[i].numero + ", " + resultado[i].bairro + ", " + resultado[i].cidade +
-                        "</td><td>" +
-                        "<button data-id='" + resultado[i].id + "' class='excluirAluno'>Excluir</button>" +
-                        "</td><td>" +
-                        "<button data-id='" + resultado[i].id + "' class='editarAluno'>Editar</button>" +
-
-                        "</td>" +
-                        "</tr>"
-                    );
-                }
-                $(document).on('click', '.excluirAluno', function() {
-                    element = $(this);
-
-                    id = element.data('id');
-                    aluno.delete(id, function() {
-                        list();
-                    });
-
-                });
-            }
-        });
-    }
-
-    listAluno();
+  $("#saveAluno").click(function(e) {
+      e.preventDefault();
+      aluno = new Aluno(
+          null,
+          $("#inputNomeAluno").val(),
+          $("#inputEmailAluno").val(),
+          $("#inputTelefoneAluno").val(),
+          $("#inputLogradouroAluno").val(),
+          $("#inputNumeroAluno").val(),
+          $("#inputBairroAluno").val(),
+          $("#inputCidadeAluno").val()
+      );
+      aluno.insert();
+      setTimeout(listAluno(), 100);
+      $("#form-addAluno").hide();
+  });
 });
+
+function listAluno() {
+    var aluno = new Aluno();
+    aluno.findAll(function(resultado) {
+        if (resultado) {
+            $("#itensDataAluno").empty();
+            for (i = 0; i < resultado.length; i++) {
+                $("#itensDataAluno").append(
+                    "<tr><td>" + resultado[i].nome +
+                    //"</td><td>" + resultado[i].nome +
+                    "</td><td>" + resultado[i].teleone +
+                    // "</td><td>" + resultado[i].email +
+                    //"</td><td>" + resultado[i].logradouro + ", " + resultado[i].numero + ", " + resultado[i].bairro + ", " + resultado[i].cidade +
+                    "</td><td>" +
+                    "<button data-id='" + resultado[i].id + "' class='excluirAluno'>Excluir</button>" +
+                    "</td><td>" +
+                    "<button data-id='" + resultado[i].id + "' class='editarAluno'>Editar</button>" +
+
+                    "</td>" +
+                    "</tr>"
+                );
+            }
+            $(document).on('click', '.excluirAluno', function() {
+                element = $(this);
+
+                id = element.data('id');
+                aluno.delete(id, function() {
+                    list();
+                });
+
+            });
+        }
+    });
+}

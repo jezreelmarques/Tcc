@@ -3,7 +3,7 @@
 <head manifest="offlinedatabase.manifest">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8" />
-    <title>Criação de Sites</title>
+    <title>School Map</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
     <link href="./css/style.css" rel="stylesheet" />
 
@@ -15,7 +15,6 @@
     <script>
         var sqlLite = new SqlLite(shortName, version, displayName, maxSize);
         sqlLite.start();
-        console.log(sqlLite);
     </script>
     <script src="./js/escola.js"></script>
     <script src="./js/aluno.js"></script>
@@ -29,22 +28,15 @@
 </head>
 
 <body>
-
-
-
-
     <div class="botaopesquisa">
         <div class="botao">
             <input type="image" id="btn-menu" src="imagens/menu.png" name="imagesubmit1">
             <input type="image" id="btn-menuVoltar" src="imagens/menufechar.png" name="imagesubmit1">
         </div>
-
     </div>
-
 
     <div id="map"> </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAz6PXPByo9Ih_Taqjq0EVDF8OotH3q3ac"></script>
-
 
     <!--sessao de navegaçao entre topicos-->
     <div id="divMenu">

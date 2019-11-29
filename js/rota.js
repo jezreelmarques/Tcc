@@ -53,14 +53,11 @@ var Rota = function(id, id_escola, turno, id_alunos) {
         var _this = this;
 
         var query = `insert into rota (id_escola, turno) VALUES ('${this.id_escola}', '${this.turno}');`;
-        console.log(query);
         try {
             sqlLite.localDB.transaction(function(transaction) {
                 transaction.executeSql(
                     query, [],
                     function(transaction, results) {
-                        console.log(results);
-                        console.log(transaction);
                         if (!results.rowsAffected) {
                             sqlLite.updateStatus("Erro: Inserção não realizada");
                         } else {
@@ -83,7 +80,6 @@ var Rota = function(id, id_escola, turno, id_alunos) {
                 values.push(`(${this.id}, ${this.id_alunos[i]})`);
             }
             query += values.join(',') + ';';
-            console.log(query);
             try {
                 sqlLite.localDB.transaction(function(transaction) {
                     transaction.executeSql(
@@ -92,8 +88,7 @@ var Rota = function(id, id_escola, turno, id_alunos) {
                             if (!results.rowsAffected) {
                                 sqlLite.updateStatus("Erro: Inserção não realizada");
                             } else {
-                                //sqlLite.updateStatus("Inserção realizada, linha id: " + results.insertId);
-                                console.log(results);
+                                sqlLite.updateStatus("Inserção realizada, linha id: " + results.insertId);
                             }
                         },
                         sqlLite.errorHandler
@@ -138,7 +133,6 @@ var Rota = function(id, id_escola, turno, id_alunos) {
                         for (var i = 0; i < results.rows.length; i++) {
                             rows[id].alunos.push(results.rows.item(i));
                         }
-                        console.log(rows);
                         callback(rows);
                     }, function(transaction, error) {
                         console.log("Erro: " + error.code + "<br>Mensagem: " + error.message);
@@ -156,7 +150,6 @@ var Rota = function(id, id_escola, turno, id_alunos) {
 
         query = `SELECT r.id, e.nome, r.turno FROM rota r `;
         query += `JOIN escola e ON e.id = r.id_escola;`;
-        console.log(query);
         try {
             sqlLite.localDB.transaction(function(transaction) {
 
@@ -166,7 +159,6 @@ var Rota = function(id, id_escola, turno, id_alunos) {
                         rows.push(results.rows.item(i));
 
                     }
-                    console.log(rows);
                     callback(rows);
                 }, function(transaction, error) {
                     console.log("Erro: " + error.code + "<br>Mensagem: " + error.message);
@@ -186,13 +178,9 @@ var Rota = function(id, id_escola, turno, id_alunos) {
 
     this.delete = function(id, callback) {
         query = "DELETE FROM rota WHERE id=" + id + ";";
-
-
-        console.log(query);
         try {
             sqlLite.localDB.transaction(function(transaction) {
                 transaction.executeSql(query, [], function(transaction, results) {
-                    console.log(transaction);
                     if (!results.rowsAffected) {
                         console.log("Erro: Delete não realizado.");
                     } else {
@@ -202,7 +190,6 @@ var Rota = function(id, id_escola, turno, id_alunos) {
 
             });
         } catch (e) {
-
             console.log("Erro: DELETE não realizado " + e + ".");
         }
     };
@@ -234,7 +221,6 @@ function listRota() {
                 id = element.data('id');
                 rota.find(function(data) {
                     // Iniciando a rota.
-                    console.log(data[id].logradouro);
                     address = data[id].cidade + data[id].logradouro + data[id].numero + data[id].bairro;
 
                 }, id)
@@ -280,10 +266,8 @@ function listRota() {
 
 
 $(document).ready(function() {
-
     $("#saveRota").click(function(e) {
         e.preventDefault();
-
         rota = new Rota(
             null,
             $("#selectRotaEscola").val(),
@@ -291,6 +275,7 @@ $(document).ready(function() {
             $("#selectRotaAluno").val()
         );
         rota.insert();
-
+        setTimeout(listRota(), 100);
+        $("#form-addRota").hide();
     });
 });
